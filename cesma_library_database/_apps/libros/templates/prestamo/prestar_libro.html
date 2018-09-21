@@ -1,0 +1,39 @@
+{% extends 'layouts/base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+	<br>
+	<div class="box">
+		<div class="row">
+			<div class="col-2">
+				<img src="{% static libro.get_portada %}" class="img-fluid">
+			</div>
+			<div class="col-10">
+				<h3>{{ libro.nombre }}</h3>
+				<p style="margin: 0"><b>Código:</b> {{ libro.codigo }}</p>
+				<p style="margin: 0"><b>Editorial:</b> {{ libro.editorial }}</p>
+				<p style="margin: 0"><b>Autor:</b> {{ libro.autor }}</p>
+				<p style="margin: 0"><b>ISBN:</b> {{ libro.ISBN }}</p>
+				{% if user.is_authenticated %}
+					<a href="{% url 'prestar_libro' libro.ISBN %}" class="btn btn-sm btn-info">Prestar</a>
+				{% endif %}
+			</div>
+		</div>
+		<hr>
+		<form action="{% url 'prestar_libro' libro.ISBN %}" method="POST">
+			{% csrf_token %}
+			<div class="row">
+				{% for forms in form %}
+					<div class="form-group col-md-12">
+						<label>{{ forms.label }}</label>
+						{{ forms }}
+					</div>
+				{% endfor %}
+				<div class="form-group text-center col-md-12">
+					<button type="submit" class="btn btn-success">Realizar prestamo</button>
+				</div>
+			</div>
+		</form>
+	</div>
+{% endblock content %}

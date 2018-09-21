@@ -4,6 +4,19 @@
 
 {% block content %}
 	<br>
+	<form action="{% url 'prestamo_libro' %}" method="GET">
+						<div class="row">
+							{% for forms in form %}
+								<div class="form-group col-md-12">
+									<label>{{ forms.label }}</label>
+									{{ forms }}
+								</div>
+							{% endfor %}
+							<div class="form-group text-center col-md-12">
+								<button type="submit" class="btn btn-success">Buscar</button>
+							</div>
+						</div>
+					</form>
 	<div class="box">
 		<table class="table table-hover">
 			<thead>
