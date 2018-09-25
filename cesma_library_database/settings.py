@@ -58,7 +58,7 @@ ROOT_URLCONF = 'cesma_library_database.urls'
 TEMPLATES = [
 	{
 		'BACKEND': 'django.template.backends.django.DjangoTemplates',
-		'DIRS': [],
+		'DIRS': ['cesma_library_database/apps/libros/templates'],
 		'APP_DIRS': True,
 		'OPTIONS': {
 			'context_processors': [
