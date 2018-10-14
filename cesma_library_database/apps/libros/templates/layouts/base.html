@@ -10,7 +10,7 @@
 		<style>
 			body{
 				transition: 0.5s;
-				background-color: #E2DCC4;
+				background-color: #85C1e9;
 				color: #00070C;
 			}
 			.box{
@@ -29,8 +29,15 @@
 			{% endfor %}
 		</div>
 		<div class="container">
-			<div class="text-center">
-				<img src="{% static 'img/EspirituSanto.jpg' %}" width="150" >
+			<div class="text-left">
+				<div class="row align-items-center" style="background-color: #f8f9fa; margin: 0px;">
+					<div class="col-2">
+						<img src="{% static 'img/EspirituSanto.jpg' %}" width="100">
+					</div>
+					<div class="col-10">
+						<h2>CESMA Library´s data base</h2>
+					</div>
+				</div>
 			</div>
 			{% include 'elements/nav-menu.html' %}
 			{% block content %}{% endblock content %}
