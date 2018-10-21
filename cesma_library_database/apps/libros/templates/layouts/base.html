@@ -1,4 +1,7 @@
 {% load static %}
+
+{% load prestamo_filter %}
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -24,6 +27,10 @@
 	</head>
 	<body>
 		<div id="messages">
+			{% show_prestamo as show_prestamo %}
+			{% if show_prestamo > 0 %}
+				<div class="alert alert-warning text-center">Hay prestamos de libros pendientes por ingresar</div>
+			{% endif %}
 			{% for message in messages %}
 				<div class="alert alert-{{ message.tags }} text-center">{{ message|safe }}</div>
 			{% endfor %}

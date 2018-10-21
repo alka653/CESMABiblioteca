@@ -1,3 +1,4 @@
+from cesma_library_database.apps.libros.forms import LibroSearchForm
 from cesma_library_database.apps.libros.models import Libros
 from django.views.generic import ListView, FormView
 from django.views.generic.edit import FormMixin
@@ -8,7 +9,6 @@ from django.db.models import Q
 from .models import *
 from .forms import *
 import datetime
-from cesma_library_database.apps.libros.forms import LibroSearchForm
 
 template_dir = 'prestamo/'
 
@@ -36,8 +36,10 @@ class PrestarLibro(FormView):
 
 	def get_context_data(self, **kwargs):
 		context = super(PrestarLibro, self).get_context_data(**kwargs)
+		libro = Libros.objects.filter(ISBN = self.kwargs['libro_isbn']).first()
 		context['title'] = 'Bienvenido'
-		context['libro'] = Libros.objects.filter(ISBN = self.kwargs['libro_isbn']).first()
+		context['libro'] = libro
+		context['stock'] = Prestamos.objects.filter(libro  = libro, fecha_devolucion__isnull = True).count()
 		return context
 
 	def form_valid(self, form):

@@ -6,6 +6,7 @@ class Libros(models.Model):
 	editorial = models.CharField(max_length=60)
 	autor = models.CharField(max_length=90)
 	ISBN = models.CharField(max_length=20)
+	stock = models.IntegerField()
 	portada = models.ImageField(upload_to = 'img/libros/', blank = True, null = True)
 
 	def __str__(self):

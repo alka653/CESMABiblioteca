@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 	'cesma_library_database.apps.libros',
 	'cesma_library_database.apps.estudiantes',
 	'cesma_library_database.apps.prestamo',
+	'cesma_library_database.apps.prestamo.templatetags'
 ]
 
 MIDDLEWARE_CLASSES = [
