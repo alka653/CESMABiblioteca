@@ -2,6 +2,8 @@
 
 {% load staticfiles %}
 
+{% load prestamo_filter %}
+
 {% block content %}
 	<br>
 	<form action="{% url 'prestamo_libro' %}" method="GET">
@@ -37,6 +39,8 @@
 						<td>
 							{% if prestamo.fecha_devolucion %}
 								{{ prestamo.fecha_devolucion }}
+							{% else %}
+								{% diff_date prestamo.fecha_prestamo %}
 							{% endif %}
 						</td>
 						<td>
