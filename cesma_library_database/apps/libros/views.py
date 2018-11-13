@@ -10,7 +10,6 @@ template_dir = 'libro/'
 
 class ListLibro(FormMixin, ListView):
 	model = Libros
-	paginate_by = 15
 	form_class = LibroSearchForm
 	template_name = template_dir+'list_libro.html'
 
