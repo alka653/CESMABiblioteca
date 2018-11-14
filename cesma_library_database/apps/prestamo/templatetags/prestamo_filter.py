@@ -14,4 +14,4 @@ def show_prestamo():
 @register.simple_tag
 def diff_date(date):
 	diff = (date.now().date() - datetime.strptime(date.strftime("%Y/%m/%d %I:%M:%S %p"), '%Y/%m/%d %I:%M:%S %p').date()).days
-	return 'Tiene '+str(diff)+' días de retraso' if diff > 0 else ''
+	return 'Tiene '+str(diff)+' días de retraso' if show_prestamo() > 0 else ''
