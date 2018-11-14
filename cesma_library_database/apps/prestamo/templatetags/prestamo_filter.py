@@ -9,7 +9,7 @@ register = template.Library()
 @register.simple_tag
 def show_prestamo():
 	now = datetime.now() + timedelta(days = 12)
-	return Prestamos.objects.filter(fecha_devolucion__isnull = True, fecha_prestamo__lte = now).count()
+	return Prestamos.objects.filter(fecha_devolucion__isnull = True, fecha_prestamo__gte = now).count()
 
 @register.simple_tag
 def diff_date(date):
